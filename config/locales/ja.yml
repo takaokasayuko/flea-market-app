@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+
+    attributes:
+      user:
+        email: メール
+        password: パスワード
+
+    errors:
+      messages:
+        invalid: "%{attribute}が正しくありません"
+
