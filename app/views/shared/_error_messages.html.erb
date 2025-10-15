@@ -1,7 +1,7 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div class = "form__error">
     <ul class = "error-message">
-      <% @user.errors.full_messages.each do |message| %>
+      <% object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

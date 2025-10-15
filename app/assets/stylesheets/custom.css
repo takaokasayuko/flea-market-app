@@ -2,6 +2,11 @@ ul {
 	list-style: none;
 }
 
+/* アラートメッセージ */
+.alert-danger {
+	color: red;
+}
+
 /* ヘッダー */
 .header {
 	background-color: black;
@@ -15,7 +20,7 @@ ul {
 	padding: 0 20px;
 }
 
-/* エラーメッセージ */
+/* 会員登録・ログインフォーム */
 .form__error {
 	text-align: left;
 }
@@ -24,8 +29,7 @@ ul {
 	color: red;
 }
 
-/* 会員登録フォーム */
-.content {
+.content-form {
 	width: 50%;
 	text-align: center;
 	margin: 0 auto;
