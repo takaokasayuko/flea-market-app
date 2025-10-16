@@ -64,3 +64,4 @@ end
 
 gem 'htmlbeautifier'
 gem 'rails-i18n'
+gem "importmap-rails"

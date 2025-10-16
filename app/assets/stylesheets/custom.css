@@ -9,15 +9,61 @@ ul {
 
 /* ヘッダー */
 .header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	align-items: center;
 	background-color: black;
 	padding: 10px;
 }
 
-.header-logo {
+.header-logo,
+.header__nav {
 	display: flex;
 	align-items: center;
 	height: 50px;
 	padding: 0 20px;
+}
+
+.header__center {
+	background-color: white;
+	height: 28px;
+	width: 30%;
+	border-radius: 3px;
+}
+
+.header__center-text {
+	margin: 0;
+	padding: 4px 20px;
+}
+
+.header__nav {
+	width: 30%;
+}
+
+.nav__group {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.page-link {
+	color: white;
+	text-decoration: none;
+}
+
+.nav__item-product {
+	background-color: white;
+	padding: 5px 15px;
+	border-radius: 3px;
+}
+
+.product-link {
+	text-decoration: none;
+	color: black;
 }
 
 /* 会員登録・ログインフォーム */
