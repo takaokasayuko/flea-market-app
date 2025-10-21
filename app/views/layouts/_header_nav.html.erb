@@ -1,0 +1,29 @@
+<div class="header__center">
+  <p class="header__center-text">なにをお探しですか？</p>
+</div>
+
+<div class="header__nav">
+  <nav class="nav">
+    <ul class="nav__group">
+    <% if logged_in? %>
+      <li class="nav__item">
+        <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } , class: "page-link" %>
+      </li>
+      <li class="nav__item">
+        <%= link_to "マイページ", "#", class: "page-link" %>
+      </li>
+    <% else %>
+
+        <li class="nav__item">
+          <%= link_to "ログイン", login_path, class: "page-link" %>
+        </li>
+        <li class="nav__item">
+          <%= link_to "会員登録", signup_path, class: "page-link" %>
+        </li>
+      <% end %>
+      <li class="nav__item nav__item-product">
+        <%= link_to "出品", "#", class: "product-link" %>
+      </li>
+    </ul>
+  </nav>
+</div>

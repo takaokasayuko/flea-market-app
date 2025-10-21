@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :logged_in_user, only: [:new, :create]
+  skip_before_action :logged_in_user, only: [ :new, :create ]
   def new
     @user = User.new
   end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     else
       @user = User.new(email: user_params[:email])
       flash.now[:alert] = "ログインに失敗しました"
-      render 'new', status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
     end
   end
 
