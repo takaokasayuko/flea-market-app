@@ -25,7 +25,6 @@
 
 .page-link {
   color: white;
-  text-decoration: none;
 }
 
 .nav__item-product {
@@ -35,6 +34,5 @@
 }
 
 .product-link {
-  text-decoration: none;
   color: black;
 }

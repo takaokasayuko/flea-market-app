@@ -1,0 +1,28 @@
+.product-tabs {
+  margin-top: 30px;
+  border-bottom: solid 1px #5F5F5F;
+  padding: 0 0 10px 60px;
+}
+
+.product-tabs__tab {
+  color: #5F5F5F;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.product-tabs__tab--all {
+  margin-right: 30px;
+}
+
+.products-show {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  gap: 5%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.product-img {
+  margin-top: 40px;
+}

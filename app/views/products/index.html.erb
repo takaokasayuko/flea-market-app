@@ -2,10 +2,15 @@
   <%= render "layouts/header_nav" %>
 <% end %>
 
-<h1>Products#index</h1>
+<div class="product-tabs">
+  <%= link_to "おすすめ", '#', class: "product-tabs__tab product-tabs__tab--all" %>
+  <%= link_to "マイリスト", '#', class: "product-tabs__tab product-tabs__tab--favorites" %>
+</div>
 
+<div class="products-show">
 <% @products.each do |product| %>
   <% if product.image.attached? %>
-  <%= image_tag product.image.variant(:display).processed, alt: product.name, class: "クラス名" %>
+    <%= link_to image_tag(product.image.variant(:display).processed, alt: product.name), "#", class: "product-img" %>
+  <% end %>
 <% end %>
-<% end %>
+</div>
