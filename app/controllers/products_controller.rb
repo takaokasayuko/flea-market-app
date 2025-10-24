@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.includes(:status, :category, image_attachment: :blob)
+                      .find(params[:id])
+    @category_names = @product.category.ancestors.pluck(:name)
   end
 
   def new

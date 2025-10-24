@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :status
   has_one_attached :image do |attachable|
-    attachable.variant :display, resize_to_fill: [240, 240]
+    attachable.variant :display, resize_to_fill: [ 240, 240 ]
+    attachable.variant :large, resize_to_fill: [ 350, 400 ]
   end
 end

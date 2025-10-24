@@ -10,7 +10,7 @@
 <div class="products-show">
 <% @products.each do |product| %>
   <% if product.image.attached? %>
-    <%= link_to image_tag(product.image.variant(:display).processed, alt: product.name), "#", class: "product-img" %>
+    <%= link_to image_tag(product.image.variant(:display).processed, alt: product.name), product_path(product.id), class: "product-img" %>
   <% end %>
 <% end %>
 </div>

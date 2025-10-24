@@ -1,2 +1,55 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<% content_for :header_content do %>
+  <%= render "layouts/header_nav" %>
+<% end %>
+
+<div class="product-item">
+  <div class="product-item__img">
+    <% if @product.image.attached? %>
+      <%= image_tag(@product.image.variant(:large).processed, alt: @product.name) %>
+    <% end %>
+  </div>
+
+  <div class="product-item__description">
+    <h1 class="product-item__name"><%= @product.name %></h1>
+    <p class="product-item__price">￥<%= @product.price.to_formatted_s(:delimited) %>(値段)</p>
+
+    <div class="product-item__actions">
+      <div class="product-item__actions-favorite product-item__group">
+        <%= link_to image_tag("star-outline-white.svg", size: "43x38", alt:"お気に入りアイコン", class: "product-item__actions-icon--favorite product-item__actions-icon") , "#" %>
+        <p class="product-item__actions-favorite--num product-item__actions-num"> </p>
+      </div>
+      <div class="product-item__actions-comment product-item__group">
+        <%= link_to image_tag("speech-bubble.jpeg", size: "30x28", alt:"吹き出しアイコン", class: "product-item__actions-icon--comment product-item__actions-icon") , "#" %>
+        <p class="product-item__actions-comment--num product-item__actions-num"> </p>
+      </div>
+    </div>
+
+    <div class="product-item__order">
+      <%= link_to "購入する", "#", class: "product-item__order-link"%>
+    </div>
+    <h2 class="product-item__detail-ttl">商品説明</h2>
+    <p class="product-item__detail-text"><%= @product.detail %></p>
+
+    <h2 class="product-item__tags-ttl">商品の情報</h2>
+    <div class="product-item__tags-category">
+      <p class="product-item__tag-name">カテゴリー</p>
+      <div class="product-item__tag-group">
+        <% if @category_names %>
+          <% @category_names.each do |category_name| %>
+            <span class="product-item__tag-category">
+              <%= category_name %>
+            </span>
+          <% end %>
+        <% else %>
+          <span class="product-item__tag-category">
+            <%= @category_names %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="product-item__tags-category">
+      <p class="product-item__tag-name">商品の状態</p>
+      <span class="product-item__tag-status"><%= @product.status.name %></span>
+    </div>
+  </div>
+</div>
