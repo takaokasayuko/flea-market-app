@@ -42,7 +42,9 @@ Status.create!([
 end
 
 # 出品商品
-detail = Faker::Lorem.paragraph(sentence_count:5)
+categories = Category.pluck(:id)
+statuses = Status.pluck(:id)
+detail = Faker::Lorem.paragraph(sentence_count: 5)
 image_paths = [
   Rails.root.join("db/images/sample1.jpg"),
   Rails.root.join("db/images/sample2.jpg"),
@@ -52,12 +54,15 @@ image_paths = [
 ]
 
 30.times do |n|
+  category_id = categories[n % categories.size]
+  status_id = statuses[n % statuses.size]
+
   product = Product.create!(
   name: "商品#{n+1}",
   user: User.first,
-  category: Category.first,
-  status: Status.first,
-  detail:detail,
+  category_id: category_id,
+  status_id: status_id,
+  detail: detail,
   price: rand(500..10000)
   )
 
@@ -67,4 +72,3 @@ image_paths = [
     filename: File.basename(image_path)
   )
 end
-

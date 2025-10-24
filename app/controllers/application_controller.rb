@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     return if allowed_paths.include?(request.path) || request.path.match?(product_regex)
 
     unless logged_in?
-      redirect_to login_path
+      redirect_to login_path, status: see_other
     end
   end
 end
