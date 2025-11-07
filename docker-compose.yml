@@ -1,0 +1,81 @@
+services:
+
+  frontend:
+    build:
+      context: ./docker/frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+      - node_modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    tty: true
+    command: npm run dev -- --host
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: backend
+    working_dir: /var/www/html
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: react_app
+      MYSQL_USER: react_user
+      MYSQL_PASSWORD: react_pass
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=react_user
+      - PMA_PASSWORD=react_pass
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
+  node_modules:
